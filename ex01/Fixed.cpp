@@ -15,16 +15,14 @@ Fixed::Fixed( const Fixed & src )
 	*this = src;
 }
 
-Fixed::Fixed(const int i)
+Fixed::Fixed(const int i) : _value(i << _FRACTIONAL_BITS)
 {
 	std::cout << "Integer constructor called" << std::endl;
-	_value = i << _FRACTIONAL_BITS;
 }
 
-Fixed::Fixed(const float f)
+Fixed::Fixed(const float f) : _value((int)roundf(f * (1 << _FRACTIONAL_BITS)))
 {
 	std::cout << "Integer constructor called" << std::endl;
-	_value = (int)roundf(f * (1 << _FRACTIONAL_BITS));
 }
 
 
@@ -50,7 +48,7 @@ Fixed	&Fixed::operator=( Fixed const & rhs )
 	return *this;
 }
 
-std::ostream	&operator<<( std::ostream &o, Fixed const &i )
+std::ostream	&operator<<(std::ostream &o, Fixed const &i)
 {
 	o << i.toFloat();
 	return o;

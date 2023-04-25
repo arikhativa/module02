@@ -25,7 +25,6 @@ Fixed::Fixed(const float f) : _value((int)roundf(f * (1 << _FRACTIONAL_BITS)))
 	std::cout << "Integer constructor called" << std::endl;
 }
 
-
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
@@ -34,7 +33,6 @@ Fixed::~Fixed()
 {
 	std::cout << "Destructor called" << std::endl;
 }
-
 
 /*
 ** --------------------------------- OVERLOAD ---------------------------------

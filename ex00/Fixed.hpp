@@ -6,7 +6,6 @@
 
 class Fixed
 {
-
 	public:
 
 		Fixed();
@@ -20,7 +19,6 @@ class Fixed
 	private:
 		int					_value;
 		static const int	_fractional_bits = 8;
-
 };
 
 #endif /* *********************************************************** FIXED_H */

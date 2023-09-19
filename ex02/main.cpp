@@ -6,14 +6,14 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:36:21 by yrabby            #+#    #+#             */
-/*   Updated: 2023/09/19 16:39:29 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/09/19 16:40:11 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 # include "Fixed.hpp"
 
-void test_min_max(void)
+static void test_min_max(void)
 {
 	std::cout << std::endl << " -- Tests test_min_max --" << std::endl << std::endl;
 	Fixed a(15);
@@ -31,7 +31,7 @@ void test_min_max(void)
 	std::cout << std::endl << " -- Tests test_min_max -- (END)" << std::endl;
 }
 
-void test_compare(void)
+static void test_compare(void)
 {
 	std::cout << std::endl << " -- Tests test_compare --" << std::endl << std::endl;
 	Fixed a(15);
@@ -57,7 +57,7 @@ void test_compare(void)
 	std::cout << std::endl << " -- Tests test_compare -- (END)" << std::endl;
 }
 
-void test_basic_math(void)
+static void test_basic_math(void)
 {
 	std::cout << std::endl << " -- Tests test_basic_math --" << std::endl << std::endl;
 	Fixed a(15);
@@ -77,7 +77,7 @@ void test_basic_math(void)
 	std::cout << std::endl << " -- Tests test_basic_math -- (END)" << std::endl;
 }
 
-void test_inc_dec(void)
+static void test_inc_dec(void)
 {
 	std::cout << std::endl << " -- Tests test_inc_dec --" << std::endl << std::endl;
 	Fixed a;
@@ -93,7 +93,7 @@ void test_inc_dec(void)
 	std::cout << std::endl << " -- Tests test_inc_dec -- (END)" << std::endl;
 }
 
-void test_subject(void)
+static void test_subject(void)
 {
 	std::cout << std::endl << " -- Tests From Subject --" << std::endl << std::endl;
 	Fixed a;

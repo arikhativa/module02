@@ -4,7 +4,7 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Fixed::Fixed() : _value(0)
+Fixed::Fixed(void) : _value(0)
 {
 	std::cout << "Default constructor called" << std::endl;
 }
@@ -17,19 +17,19 @@ Fixed::Fixed( const Fixed & src )
 
 Fixed::Fixed(const int i) : _value(i << _FRACTIONAL_BITS)
 {
-	std::cout << "Integer constructor called" << std::endl;
+	std::cout << "Int constructor called" << std::endl;
 }
 
 Fixed::Fixed(const float f) : _value((int)roundf(f * (1 << _FRACTIONAL_BITS)))
 {
-	std::cout << "Integer constructor called" << std::endl;
+	std::cout << "Float constructor called" << std::endl;
 }
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-Fixed::~Fixed()
+Fixed::~Fixed(void)
 {
 	std::cout << "Destructor called" << std::endl;
 }
@@ -72,7 +72,6 @@ int	Fixed::toInt(void) const
 
 int	Fixed::getRawBits(void) const
 {
-	std::cout << "getRawBits member function called" << std::endl;
 	return _value;
 }
 

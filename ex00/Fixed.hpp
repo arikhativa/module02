@@ -8,17 +8,18 @@ class Fixed
 {
 	public:
 
-		Fixed();
+		Fixed(void);
 		Fixed( Fixed const & src );
-		~Fixed();
+		~Fixed(void);
 
 		Fixed &		operator=( Fixed const & rhs );
 		int			getRawBits(void) const;
 		void		setRawBits(int const raw);
 
 	private:
+		static const int	_FRACTIONAL_BITS = 8;
+
 		int					_value;
-		static const int	_fractional_bits = 8;
 };
 
 #endif /* *********************************************************** FIXED_H */

@@ -10,11 +10,11 @@ class Fixed
 
 	public:
 
-		Fixed();
+		Fixed(void);
 		Fixed(Fixed const &src);
 		explicit Fixed(const int i);
 		explicit Fixed(const float f);
-		~Fixed();
+		~Fixed(void);
 
 		Fixed &		operator=( Fixed const & rhs );
 		int			getRawBits(void) const;
@@ -23,9 +23,9 @@ class Fixed
 		int			toInt(void) const;
 
 	private:
-		int					_value;
 		static const int	_FRACTIONAL_BITS = 8;
 
+		int					_value;
 };
 
 std::ostream	&operator<<( std::ostream & o, Fixed const & i );

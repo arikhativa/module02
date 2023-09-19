@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/19 15:36:16 by yrabby            #+#    #+#             */
+/*   Updated: 2023/09/19 15:36:17 by yrabby           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Fixed.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Fixed::Fixed() : _value(0)
+Fixed::Fixed(void) : _value(0)
 {
 }
 
@@ -26,7 +38,7 @@ Fixed::Fixed(const float f) : _value((int)roundf(f * (1 << _FRACTIONAL_BITS)))
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-Fixed::~Fixed()
+Fixed::~Fixed(void)
 {
 }
 
@@ -107,7 +119,7 @@ Fixed&	Fixed::operator++(void)
 Fixed	Fixed::operator++(int)
 {
 	Fixed tmp(*this);
-	++_value;
+	tmp._value = _value++;
 	return tmp;
 }
 
@@ -120,7 +132,7 @@ Fixed&	Fixed::operator--(void)
 Fixed	Fixed::operator--(int)
 {
 	Fixed tmp(*this);
-	--_value;
+	tmp._value = _value--;
 	return tmp;
 }
 

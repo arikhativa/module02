@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/19 15:36:18 by yrabby            #+#    #+#             */
+/*   Updated: 2023/09/19 15:36:19 by yrabby           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FIXED_HPP
 # define FIXED_HPP
 
@@ -10,11 +22,11 @@ class Fixed
 
 	public:
 
-		Fixed();
+		Fixed(void);
 		Fixed(Fixed const &src);
 		explicit Fixed(const int i);
 		explicit Fixed(const float f);
-		~Fixed();
+		~Fixed(void);
 
 		Fixed		&operator=( Fixed const & rhs );
 		int			getRawBits(void) const;
@@ -45,8 +57,9 @@ class Fixed
 		static const Fixed	&max(const Fixed &a, const Fixed &b);
 
 	private:
-		int					_value;
 		static const int	_FRACTIONAL_BITS = 8;
+
+		int					_value;
 
 };
 

@@ -6,14 +6,16 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:36:21 by yrabby            #+#    #+#             */
-/*   Updated: 2023/09/19 16:40:11 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/09/20 11:05:50 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
+#include <bitset>
 
 # include "Fixed.hpp"
 
-static void test_min_max(void)
+ void test_min_max(void)
 {
 	std::cout << std::endl << " -- Tests test_min_max --" << std::endl << std::endl;
 	Fixed a(15);
@@ -31,7 +33,7 @@ static void test_min_max(void)
 	std::cout << std::endl << " -- Tests test_min_max -- (END)" << std::endl;
 }
 
-static void test_compare(void)
+ void test_compare(void)
 {
 	std::cout << std::endl << " -- Tests test_compare --" << std::endl << std::endl;
 	Fixed a(15);
@@ -57,7 +59,7 @@ static void test_compare(void)
 	std::cout << std::endl << " -- Tests test_compare -- (END)" << std::endl;
 }
 
-static void test_basic_math(void)
+ void test_basic_math(void)
 {
 	std::cout << std::endl << " -- Tests test_basic_math --" << std::endl << std::endl;
 	Fixed a(15);
@@ -77,7 +79,7 @@ static void test_basic_math(void)
 	std::cout << std::endl << " -- Tests test_basic_math -- (END)" << std::endl;
 }
 
-static void test_inc_dec(void)
+ void test_inc_dec(void)
 {
 	std::cout << std::endl << " -- Tests test_inc_dec --" << std::endl << std::endl;
 	Fixed a;
@@ -93,7 +95,7 @@ static void test_inc_dec(void)
 	std::cout << std::endl << " -- Tests test_inc_dec -- (END)" << std::endl;
 }
 
-static void test_subject(void)
+ void test_subject(void)
 {
 	std::cout << std::endl << " -- Tests From Subject --" << std::endl << std::endl;
 	Fixed a;
@@ -112,13 +114,92 @@ static void test_subject(void)
 
 }
 
+void printFloatBits(float value) {
+    uint32_t intValue;
+    std::memcpy(&intValue, &value, sizeof(float));
+
+    std::bitset<sizeof(float) * 8> bits(intValue);
+
+	std::cout << "float\t==\t" << value << "\t->\t" << bits << std::endl;
+}
+
+void printIntBits(int value) {
+    std::bitset<sizeof(int) * 8> bits(value);
+	std::cout << "int\t==\t" << value << "\t->\t" << bits << std::endl;
+}
+
+void explain_int_to_int(void)
+{
+	int i = 5;
+	std::cout << "int i(5)" << std::endl;
+	printIntBits(i);
+
+	std::cout << "int fix_value(i << 8)" << std::endl;
+	int fix_value(i << 8);
+	printIntBits(fix_value);
+
+	std::cout << "int back_to_int(fix_value >> 8)" << std::endl;
+	int back_to_int(fix_value >> 8);
+	printIntBits(back_to_int);
+}
+
+void explain_int_to_float(void)
+{
+	int i = 5;
+	std::cout << "int i(5);" << std::endl;
+	printIntBits(i);
+
+	std::cout << "int fix_value(i << 8);" << std::endl;
+	int fix_value(i << 8);
+	printIntBits(fix_value);
+
+	std::cout << "float turn_to_float((float)fix_value);" << std::endl;
+	float turn_to_float((float)fix_value);
+	printFloatBits(turn_to_float);
+
+	std::cout << "float divide(turn_to_float / (1 << 8));" << std::endl;
+	float divide(turn_to_float/ (1 << 8));
+	printFloatBits(divide);
+}
+
+
+void explain_float_to_float(void)
+{
+	std::cout << "float f = 5.1;" << std::endl;
+	float f = 255;
+	printFloatBits(f);
+
+	std::cout << "float fix_value_pre_round(f * (1 << 8));" << std::endl;
+	float fix_value_pre_round(f * (1 << 8));
+	printFloatBits(fix_value_pre_round);
+
+	std::cout << "float rounded(roundf(fix_value_pre_round));" << std::endl;
+	float rounded(roundf(fix_value_pre_round));
+	printFloatBits(rounded);
+
+	std::cout << "int cast_to_int((int)rounded);" << std::endl;
+	int cast_to_int((int)rounded);
+	printIntBits(cast_to_int);
+
+	std::cout << "float cast_to_float((float)cast_to_int);" << std::endl;
+	float cast_to_float((float)cast_to_int);
+	printFloatBits(cast_to_float);
+
+	std::cout << "float divide(cast_to_float / (1 << 8));" << std::endl;
+	float divide(cast_to_float / (1 << 8));
+	printFloatBits(divide);
+}
+
 int main( void )
 {
 	test_subject();
-	test_inc_dec();
-	test_basic_math();
-	test_compare();
-	test_min_max();
+	// test_inc_dec();
+	// test_basic_math();
+	// test_compare();
+	// test_min_max();
+	// explain_int_to_int();
+	// explain_int_to_float();
+	// explain_float_to_float();
 
 	return 0;
 }
